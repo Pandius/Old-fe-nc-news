@@ -1,14 +1,14 @@
 
 import React from 'react';
-import styles from '../styles/Loading.module.css'
-import LoadingImg from '../images/LoadingImg.gif'
+import styles from './Loading.module.css'
+import LoadingGif from '../../pictures/LoadingGif.gif'
 
 const Loading = ({ text }) => {
     return (
-        <div>  
+        <div>
             <div className={styles.loading}>
                 <h2>{text || 'loading...'}</h2>
-                <img src={LoadingImg} alt={'LoadingImg'}/>
+                <img src={LoadingGif} alt={'LoadingGif'} />
             </div>
         </div>
     )
