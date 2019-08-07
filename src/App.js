@@ -5,6 +5,8 @@ import Home from './components/Home/Home'
 import styles from "./App.module.css";
 import { Router } from '@reach/router';
 import Articles from './components/Articles/Articles'
+import Article from './components/Article/Article'
+import ErrorPage from './utils/ErrorPage/ErrorPage';
 
 
 class App extends React.Component {
@@ -21,6 +23,10 @@ class App extends React.Component {
         <Router>
           <Home path='/' />
           <Articles path='/articles' />
+          <Articles path='/articles/topic/:topic' loggedInAs={userLoggedIn} />
+          <Article path='/articles/:article_id' loggedInAs={userLoggedIn} />
+          <ErrorPage default />
+
 
         </Router>
       </div >
