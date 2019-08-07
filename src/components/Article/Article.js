@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import getArticleById from '../../api'
 import Loading from '../../utils/Loading/Loading';
 import ErrorPage from '../../utils/ErrorPage/ErrorPage';
+import dateFormat from '../../utils/DateFormat'
 
 class Article extends Component {
     state = {
@@ -35,7 +36,7 @@ class Article extends Component {
                 <h4>Author:{article.author}</h4>
                 <h4>Topic: {article.topic}</h4>
                 <h4>Comments: {article.comment_count}</h4>
-                <h4>Submitted on: {article.created_at}</h4>
+                <h4>Submitted on: {dateFormat(article.created_at)}</h4>
             </div>
         );
     }
