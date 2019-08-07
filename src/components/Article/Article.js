@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import getArticleById from '../../api'
+import { getArticleById } from '../../api'
 import Loading from '../../utils/Loading/Loading';
 import ErrorPage from '../../utils/ErrorPage/ErrorPage';
 import dateFormat from '../../utils/DateFormat'
+import styles from '../Article/Article.module.css'
+import Voter from '../Voter/Voter'
 
 class Article extends Component {
     state = {
@@ -30,13 +32,14 @@ class Article extends Component {
         if (isLoading) return <Loading text='Loading article...' />
 
         return (
-            <div>
+            <div className={styles.singleArticle}>
                 <h2>{article.title}</h2>
                 <p>{article.body}</p>
                 <h4>Author:{article.author}</h4>
                 <h4>Topic: {article.topic}</h4>
                 <h4>Comments: {article.comment_count}</h4>
                 <h4>Submitted on: {dateFormat(article.created_at)}</h4>
+                <Voter className={styles.ArticleVoter} votes={article.votes} id={article.article_id} type='articles' />
             </div>
         );
     }
