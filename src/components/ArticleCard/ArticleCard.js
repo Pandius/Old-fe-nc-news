@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "@reach/router";
 import styles from './ArticleCard.module.css'
+import dateFormat from '../../utils/DateFormat'
+import Voter from '../Voter/Voter'
 
 const ArticleCard = ({ articles }) => {
     const body = articles.body.slice(0, 100)
@@ -13,8 +15,10 @@ const ArticleCard = ({ articles }) => {
                 <Link to={`/articles/topic/${articles.topic}`}>
                     <h5>Topic: {articles.topic}</h5></Link>
                 <h4>Author: {articles.author}</h4>
-                <h4>Submitted on: {articles.created_at}</h4>
+                <h4>Submitted on: {dateFormat(articles.created_at)}</h4>
                 <h4>Comments:{articles.comment_count}</h4>
+                <Voter votes={articles.votes} id={articles.article_id} type='articles' />
+
             </li>
         </div>
     )
