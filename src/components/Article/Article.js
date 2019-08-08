@@ -5,6 +5,7 @@ import ErrorPage from '../../utils/ErrorPage/ErrorPage';
 import dateFormat from '../../utils/DateFormat'
 import styles from '../Article/Article.module.css'
 import Voter from '../Voter/Voter'
+import ArticleComments from '../ArticleComments/ArticleComments'
 
 class Article extends Component {
     state = {
@@ -28,6 +29,8 @@ class Article extends Component {
 
     render() {
         const { article, isLoading, err } = this.state
+        const { loggedInAs, article_id } = this.props
+
         if (err) return <ErrorPage err={err} />
         if (isLoading) return <Loading text='Loading article...' />
 
@@ -40,6 +43,8 @@ class Article extends Component {
                 <h4>Comments: {article.comment_count}</h4>
                 <h4>Submitted on: {dateFormat(article.created_at)}</h4>
                 <Voter className={styles.ArticleVoter} votes={article.votes} id={article.article_id} type='articles' />
+                <ArticleComments article_id={article_id} username={loggedInAs} />
+
             </div>
         );
     }
