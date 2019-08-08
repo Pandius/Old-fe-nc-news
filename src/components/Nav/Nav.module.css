@@ -1,0 +1,6 @@
+.Button {
+    color: rgb(255, 255, 255); font-size: 19px; line-height: 19px; padding: 0px; border-radius: 50px; font-family: "Comic Sans MS", cursive, sans-serif; font-weight: 700; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none; background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%); box-shadow: rgba(0, 0, 0, 0.58) 14px 4px 9px 5px; border: 6px ridge rgba(28, 110, 164, 0.43); display: inline-block;}
+    .Button:hover {
+    background: #1C6EA4; }
+    .Button:active {
+    background: #144E75; }
