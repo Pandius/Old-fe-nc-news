@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { getArticles } from '../../api'
 import Loading from '../../utils/Loading/Loading'
 import ErrorPage from '../../utils/ErrorPage/ErrorPage'
+import styles from './Articles.module.css'
+import ArticleCard from '../ArticleCard/ArticleCard'
+import Sorter from '../Sorter/Sorter'
 
 
 
@@ -11,9 +14,10 @@ class Articles extends Component {
         articles: [],
         sort_by: 'created_at',
         order: 'asc',
-        articleCount: 0,
+        comment_count: 0,
         isLoading: true,
-        err: null
+        err: null,
+        articlesCount: 0
     }
 
     componentDidMount() {
@@ -23,10 +27,11 @@ class Articles extends Component {
     fetchArticles = () => {
         const { topic } = this.props
         const { sort_by, order } = this.state
-        getArticles(topic, sort_by, order, p)
+        getArticles(topic, sort_by, order)
             .then(({ articles, total_count }) => {
                 this.setState({
-                    articles: articles, articleCount: total_count,
+                    articles: articles,
+                    articleCount: total_count,
                     isLoading: false,
                     err: null
 
@@ -35,15 +40,11 @@ class Articles extends Component {
                 this.setState({ err, isLoading: false })
             })
     }
-    setSort = e => {
-        const { value } = e.target
-        this.setState({ sort_by: value })
+    setSortOrder = e => {
+        const { value, name } = e.target
+        this.setState({ [name]: value })
     }
 
-    setOrder = e => {
-        const { value } = e.target
-        this.setState({ order: value })
-    }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.topic !== this.props.topic ||
@@ -57,16 +58,15 @@ class Articles extends Component {
     render() {
         const { articles, isLoading, err } = this.state
         if (err) return <ErrorPage err={err} />
-
         if (isLoading) return <Loading text='loading articles...' />
         return (
             <div>
-                <ul >
+                <Sorter setSortOrder={this.setSortOrder} value={this.state.order} />
+                <ul className={styles.articleList}>
                     {articles.map(article => {
                         return (
-                            <li>
-                                {article.body}
-                            </li>)
+                            <ArticleCard articles={article} key={article.article_id} />
+                        )
                     })}
                 </ul>
             </div >
@@ -74,5 +74,6 @@ class Articles extends Component {
 
     }
 }
+
 
 export default Articles;
