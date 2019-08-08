@@ -8,7 +8,7 @@ const ArticleCard = ({ articles }) => {
     const body = articles.body.slice(0, 100)
     return (
         <div>
-            <li key={articles.article_id} className={styles.articlaCard}>
+            <li key={articles.article_id} className={styles.articleCard}>
                 <Link to={`/articles/${articles.article_id}`}>
                     <h2>{articles.title}</h2> </Link>
                 <h5>{body}...</h5>
