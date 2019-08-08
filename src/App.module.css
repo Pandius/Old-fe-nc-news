@@ -1,5 +1,16 @@
+
+
+
+
+
+
+
+
+
+
 .main_app{
-    font-family:'Franklin Gothic Medium';
-    background-color: royalblue;
-    min-height: 100vh;
+  font:  href="https://fonts.googleapis.com/css?family=Lacquer&display=swap";
+  min-height: 100vh;
+    text-align: center;
+  background-image: url("../src/pictures/main-app-background.png.jpg");
   }

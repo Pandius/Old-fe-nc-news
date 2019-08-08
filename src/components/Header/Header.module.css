@@ -1,17 +1,19 @@
 .header {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-areas: 
-    'title loggedInAs';
-    background: rgb(104, 113, 116);
-    margin: 10px;
-    border-radius: 10px;
-
+    display: flexbox;
+    margin: 0px;
+    padding-top: 0px;
+    background: url('../../pictures/header.png');
+    background-size: cover;
+    background-position: center center; 
+   
 } 
 
 .header h1 {
+    text-align: right;
+    padding-top: 100px;
+    margin-top: 0px;
+    margin-left: 100px;
     font-size: 8vw;
-    font: "Lucida Console";
     color: #FFFFFF;
     text-shadow: 0 0 10px #FFFFFF;
 
@@ -19,9 +21,10 @@
 
 .header h3{
     text-align: right;
-    margin: 50px;
+    margin: 0px;
     font-size: 2vw;
-    color: 00004D;
+    color:#cc99ff
+
 }
 
 .header .link {
